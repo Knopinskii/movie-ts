@@ -5,7 +5,7 @@ const Error = () => {
   const error = useRouteError();
   return (
     <div>
-      <h1> There is an error with something...</h1>
+      <h1> There is an error with something....</h1>
       <p>{(error as Error).message ?? ""}</p>
       <button
         onClick={() => navigate(-1)}
