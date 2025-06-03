@@ -4,12 +4,13 @@ import AppLayout from "./ui/AppLayout";
 import MoviesList, {
   loader as moviesLoader,
 } from "./features/movies/MoviesList";
-import FavoritesList from "./features/favorites /FavoritesList";
+import FavoritesList from "./features/favorites/FavoritesList";
 import Error from "./ui/Error";
 import SearchResults, {
   loader as searchLoader,
 } from "./features/browse/SearchResults";
 import Home from "./ui/Home";
+import MovieDetails from "./features/movies/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
         element: <SearchResults />,
         loader: searchLoader,
         errorElement: <Error />,
+      },
+      {
+        path: "/moviedetails",
+        element: <MovieDetails />,
       },
     ],
   },

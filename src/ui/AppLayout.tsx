@@ -1,5 +1,5 @@
 import Header from "./Header";
-import FavoritesOverview from "../features/favorites /FavoritesOverview";
+import FavoritesOverview from "../features/favorites/FavoritesOverview";
 import { Outlet, useNavigation } from "react-router-dom";
 import Loader from "./Loader";
 
