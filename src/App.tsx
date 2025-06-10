@@ -1,14 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import AppLayout from "./ui/AppLayout";
-import MoviesList, {
-  loader as moviesLoader,
-} from "./features/movies/MoviesList";
+
 import FavoritesList from "./features/favorites/FavoritesList";
 import Error from "./ui/Error";
-import SearchResults, {
+import MovieResults, {
   loader as searchLoader,
-} from "./features/browse/SearchResults";
+} from "./features/movies/MovieResults";
 import Home from "./ui/Home";
 import MovieDetails from "./features/movies/MovieDetails";
 
@@ -19,12 +17,6 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       { path: "/", element: <Home /> },
-      {
-        path: "/movielist",
-        element: <MoviesList />,
-        errorElement: <Error />,
-        loader: moviesLoader,
-      },
 
       {
         path: "/favoriteslist",
@@ -32,13 +24,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/searchresults/:query",
-        element: <SearchResults />,
+        element: <MovieResults />,
         loader: searchLoader,
         errorElement: <Error />,
       },
       {
         path: "/moviedetails",
         element: <MovieDetails />,
+
+        errorElement: <Error />,
       },
     ],
   },

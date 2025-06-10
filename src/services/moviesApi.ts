@@ -4,17 +4,17 @@ const API_KEY = "6fa3393b";
 import axios from "axios";
 import type { MovieResponse } from "../types/types";
 
-export async function getMovies(): Promise<MovieResponse> {
+export async function getSearchResults(query: string): Promise<MovieResponse> {
   const res = await axios.get<MovieResponse>(
-    `https://www.omdbapi.com/?apikey=${API_KEY}&s=Avengers`
+    `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
   );
   if (!res) throw Error("failed getting movies");
   return res.data;
 }
 
-export async function getSearchResults(query: string): Promise<MovieResponse> {
+export async function getMovieDetails(id: string): Promise<MovieResponse> {
   const res = await axios.get<MovieResponse>(
-    `https://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
+    `https://www.omdbapi.com/?apikey=${API_KEY}&i=${id}`
   );
   if (!res) throw Error("failed getting movies");
   return res.data;

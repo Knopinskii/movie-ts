@@ -1,8 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import type { MovieItem } from "../../types/types";
 
-const initialState: { selectedMovie: MovieItem | null } = {
-  selectedMovie: null,
+const initialState: { selected: MovieItem | null } = {
+  selected: null,
 };
 
 const selectedMovieSlice = createSlice({
@@ -10,10 +10,10 @@ const selectedMovieSlice = createSlice({
   initialState,
   reducers: {
     selectMovie(state, action: PayloadAction<MovieItem>) {
-      state.selectedMovie = action.payload;
+      state.selected = action.payload;
     },
     clearSelectedMovie(state) {
-      state.selectedMovie = null;
+      state.selected = null;
     },
   },
 });

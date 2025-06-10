@@ -8,7 +8,7 @@ function SearchMovie() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!query.trim()) return;
-    navigate(`/searchresults/${encodeURIComponent(query)}`);
+    navigate(`/searchresults/${query}`);
     setQuery("");
   }
 

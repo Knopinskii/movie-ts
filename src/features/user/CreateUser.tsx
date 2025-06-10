@@ -15,7 +15,7 @@ function CreateUser() {
 
     dispatch(updateName(username));
 
-    navigate("/movielist");
+    navigate("/");
   }
 
   return (
