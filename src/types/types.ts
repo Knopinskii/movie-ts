@@ -4,6 +4,7 @@ export interface MovieItem {
   imdbID: string;
   Type: "movie" | "series" | "episode";
   Poster: string;
+  selected: string;
 }
 
 export interface MovieResponse {

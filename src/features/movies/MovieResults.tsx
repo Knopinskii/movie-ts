@@ -10,9 +10,11 @@ function MovieResults() {
   const data = useLoaderData<MovieResponse>();
 
   return (
-    <div>
-      <h1>Search results: {data.Search.length}</h1>
-      <ul>
+    <div className="px-4 py-6 max-h-[800px] overflow-y-auto bg-gray-50 rounded-md shadow-sm">
+      <h1 className="mb-4 text-center text-xl font-semibold text-gray-800">
+        Search results: {data.Search.length}
+      </h1>
+      <ul className="flex flex-col items-center gap-6">
         {data.Search.map((movie) => (
           <MovieCard movie={movie} key={movie.imdbID} />
         ))}

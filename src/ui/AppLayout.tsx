@@ -1,5 +1,5 @@
 import Header from "./Header";
-import FavoritesOverview from "../features/favorites/FavoritesOverview";
+// import FavoritesOverview from "../features/favorites/FavoritesOverview";
 import { Outlet, useNavigation } from "react-router-dom";
 import Loader from "./Loader";
 
@@ -8,7 +8,7 @@ const AppLayout = () => {
   const isLoading = navigation.state === "loading";
 
   return (
-    <div className="min-h-screen bg-gray-400 pt-5">
+    <div className="min-h-screen bg-slate-300 pt-5">
       {isLoading && <Loader />}
 
       <Header />
@@ -16,9 +16,9 @@ const AppLayout = () => {
       <main className="max-w-screen-lg mx-auto px-4 py-8">
         <Outlet />
       </main>
-      <div className="max-w-screen-lg mx-auto px-4 py-4">
+      {/* <div className="max-w-screen-lg mx-auto px-4 py-4">
         <FavoritesOverview />
-      </div>
+      </div> */}
     </div>
   );
 };

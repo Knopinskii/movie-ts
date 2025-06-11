@@ -6,13 +6,20 @@ function Home() {
   const username = useSelector((state: RootState) => state.user.username);
 
   return (
-    <div className="my-10 px-4 text-center sm:my-16">
-      <h1 className="mb-8  text-xl font-semibold md:text-3xl">
-        The best movies.
-        <br />
+    <div className="my-16 px-4 sm:px-6 text-center">
+      <h1 className="mb-10 text-2xl sm:text-3xl font-semibold text-gray-800 tracking-tight">
+        🎬 Discover the Best Movies
       </h1>
 
-      {username === "" ? <CreateUser /> : ""}
+      {username === "" ? (
+        <CreateUser />
+      ) : (
+        <p className="mb-8 max-w-xl mx-auto text-gray-600 text-base sm:text-lg leading-relaxed">
+          Your personal gateway to the world of cinema. Instantly search and
+          explore popular and top-rated movies — with ratings, summaries, and
+          release info at your fingertips.
+        </p>
+      )}
     </div>
   );
 }

@@ -15,11 +15,22 @@ function MovieCard({ movie }: Props) {
   };
 
   return (
-    <li key={movie.imdbID} onClick={handleClick}>
-      <img src={movie.Poster} alt={movie.Poster} className="w-50 h-70" />
-      <h2>{movie.Title}</h2>
-      <p>{movie.Year}</p>
-      <p>{movie.imdbID}</p>
+    <li
+      key={movie.imdbID}
+      onClick={handleClick}
+      className="flex flex-col items-center justify-center p-5 bg-slate-300 hover:bg-slate-400 rounded-lg shadow-md cursor-pointer overflow-auto transition-colors duration-300"
+      style={{ width: 336, height: 576 }}
+    >
+      <img
+        src={movie.Poster}
+        alt={movie.Title}
+        className="object-cover rounded-md mb-5"
+        style={{ width: "100%", height: 432 }}
+      />
+      <h2 className="text-center text-xl font-semibold text-gray-800 truncate w-full">
+        {movie.Title}
+      </h2>
+      <p className="text-center text-base text-gray-600">{movie.Year}</p>
     </li>
   );
 }
