@@ -2,6 +2,10 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import type { MovieItem, MovieResponse } from "../../types/types";
+import { useNavigation } from "react-router-dom";
+import Loader from "../../ui/Loader";
+import { useDispatch } from "react-redux";
+import { addItem } from "../favorites/favoriteSlice";
 
 const API_KEY = "6fa3393b";
 
@@ -9,9 +13,19 @@ function MovieDetails() {
   const selectedMovie = useSelector(
     (state: { selectedMovie: MovieItem }) => state.selectedMovie
   );
-
+  const navigation = useNavigation();
+  const isLoading = navigation.state === "loading";
   const id = selectedMovie.selected.imdbID;
   const [movieDetails, setMovieDetails] = useState<MovieResponse | null>(null);
+  const dispatch = useDispatch();
+
+  function handleAddToFavorite() {
+    const newFavorite = {
+      movieID: id,
+      title: movieDetails.Title,
+    };
+    dispatch(addItem(newFavorite));
+  }
 
   useEffect(() => {
     async function fetchMovieDetails() {
@@ -28,12 +42,14 @@ function MovieDetails() {
     fetchMovieDetails();
   }, [id]);
 
+  console.log(navigation);
   if (!movieDetails) {
-    return <div className="text-center mt-20 text-gray-500">Loading...</div>;
+    return <div>{isLoading && <Loader />}</div>;
   }
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-gray-50 rounded-lg shadow-md mt-10 flex flex-col md:flex-row gap-8">
+      {isLoading && <Loader />}
       <div className="flex-shrink-0 w-full md:w-1/3">
         <img
           src={movieDetails.Poster}
@@ -68,7 +84,10 @@ function MovieDetails() {
         </div>
 
         <div className="mt-8">
-          <button className="bg-amber-600 text-white px-6 py-3 rounded-md shadow hover:bg-amber-700 transition">
+          <button
+            className="bg-amber-600 text-white px-6 py-3 rounded-md shadow hover:bg-amber-700 transition"
+            onClick={handleAddToFavorite}
+          >
             Add to my favorite list
           </button>
         </div>
